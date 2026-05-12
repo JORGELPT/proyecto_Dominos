@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo1.Controllers.CONTROLLER_Empleado">
+    <children>
+        <SplitPane dividerPositions="0.08761160714285716" prefHeight="400.0" prefWidth="600.0">
+            <items>
+                <!-- Panel izquierdo rojo decorativo -->
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="60.0"
+                            style="-fx-background-color: #be1e1e;" />
+
+                <!-- Panel principal -->
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="228.0" prefWidth="229.0">
+                    <children>
+                        <SplitPane dividerPositions="0.8815789473684209" layoutY="-8.0"
+                                   orientation="VERTICAL" prefHeight="408.0" prefWidth="557.0">
+                            <items>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="331.0" prefWidth="542.0">
+                                    <children>
+
+                                        <!-- ── Título ── -->
+                                        <Label layoutX="14.0" layoutY="25.0" prefHeight="34.0" prefWidth="285.0"
+                                               text="AGREGAR EMPLEADO" textFill="#004aad">
+                                            <font><Font name="System Bold" size="18.0" /></font>
+                                        </Label>
+
+                                        <!-- ══════════════════════════════════════════
+                                             COLUMNA IZQUIERDA
+                                        ══════════════════════════════════════════ -->
+
+                                        <!-- Nombre -->
+                                        <Label layoutX="23.0" layoutY="59.0" text="Nombre">
+                                            <font><Font size="14.0" /></font>
+                                        </Label>
+                                        <PasswordField fx:id="TXTnombre" layoutX="23.0" layoutY="79.0"
+                                                       prefHeight="25.0" prefWidth="285.0" />
+
+                                        <!-- Cargo (Presentación) -->
+                                        <Label layoutX="25.0" layoutY="111.0" text="Cargo">
+                                            <font><Font size="14.0" /></font>
+                                        </Label>
+                                        <RadioButton fx:id="rbCajero"     layoutX="20.0" layoutY="137.0"
+                                                     mnemonicParsing="false" text="Cajero" />
+                                        <RadioButton fx:id="rbCocinero"   layoutX="19.0" layoutY="158.0"
+                                                     mnemonicParsing="false" text="Cocinero" />
+                                        <RadioButton fx:id="rbSupervisor" layoutX="19.0" layoutY="178.0"
+                                                     mnemonicParsing="false" text="Supervisor" />
+                                        <RadioButton fx:id="rbGerente"    layoutX="19.0" layoutY="199.0"
+                                                     mnemonicParsing="false" text="Gerente" />
+
+                                        <!-- Tamaño de sucursal (Presentación) -->
+                                        <Label layoutX="19.0" layoutY="222.0" text="Presentación">
+                                            <font><Font size="14.0" /></font>
+                                        </Label>
+                                        <RadioButton fx:id="rbPequeno" layoutX="20.0" layoutY="247.0"
+                                                     mnemonicParsing="false" text="Pequeño" />
+                                        <RadioButton fx:id="rbMediana" layoutX="19.0" layoutY="268.0"
+                                                     mnemonicParsing="false" text="Mediana" />
+                                        <RadioButton fx:id="rbGrande"  layoutX="19.0" layoutY="288.0"
+                                                     mnemonicParsing="false" text="Grande" />
+
+                                        <!-- Botón Guardar -->
+                                        <Button fx:id="BTguardar" layoutX="25.0" layoutY="314.0"
+                                                mnemonicParsing="false"
+                                                onAction="#fnGuardar"
+                                                style="-fx-background-color: #d4e6ff;"
+                                                text="Guardar" textFill="#004aad" />
+
+                                        <!-- ══════════════════════════════════════════
+                                             COLUMNA CENTRAL
+                                        ══════════════════════════════════════════ -->
+
+                                        <!-- Teléfono -->
+                                        <Label layoutX="138.0" layoutY="111.0" text="Telefono">
+                                            <font><Font size="14.0" /></font>
+                                        </Label>
+                                        <PasswordField fx:id="TXTtelefono" layoutX="138.0" layoutY="131.0"
+                                                       prefHeight="25.0" prefWidth="170.0" />
+
+                                        <!-- Cédula -->
+                                        <Label layoutX="140.0" layoutY="168.0" text="Cedula">
+                                            <font><Font size="14.0" /></font>
+                                        </Label>
+                                        <PasswordField fx:id="TXTcedula" layoutX="138.0" layoutY="189.0"
+                                                       prefHeight="25.0" prefWidth="170.0" />
+
+                                        <!-- Sucursal -->
+                                        <Label layoutX="140.0" layoutY="222.0" text="Sucursal">
+                                            <font><Font size="14.0" /></font>
+                                        </Label>
+                                        <PasswordField fx:id="TXTSucursal" layoutX="140.0" layoutY="243.0"
+                                                       prefHeight="25.0" prefWidth="170.0" />
+
+                                        <!-- ══════════════════════════════════════════
+                                             COLUMNA DERECHA
+                                        ══════════════════════════════════════════ -->
+
+                                        <!-- Imagen del Empleado -->
+                                        <Label layoutX="346.0" layoutY="59.0" text="Imagen del Empleado">
+                                            <font><Font size="14.0" /></font>
+                                        </Label>
+
+                                        <!-- Horario -->
+                                        <Label layoutX="323.0" layoutY="168.0" text="Horario">
+                                            <font><Font size="14.0" /></font>
+                                        </Label>
+                                        <PasswordField fx:id="TXThorarario" layoutX="324.0" layoutY="189.0"
+                                                       prefHeight="25.0" prefWidth="170.0" />
+
+                                        <!-- Salario -->
+                                        <Label layoutX="370.0" layoutY="222.0" text="Salario">
+                                            <font><Font size="14.0" /></font>
+                                        </Label>
+                                        <PasswordField fx:id="TXTsalario" layoutX="324.0" layoutY="243.0"
+                                                       prefHeight="25.0" prefWidth="170.0" />
+
+                                    </children>
+                                </AnchorPane>
+
+                                <!-- Panel inferior azul decorativo -->
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="182.0" prefWidth="462.0"
+                                            style="-fx-background-color: #004aad;" />
+                            </items>
+                        </SplitPane>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>
+

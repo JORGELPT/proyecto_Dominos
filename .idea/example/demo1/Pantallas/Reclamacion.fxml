@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="580.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Controllers.CONTROLLER_Reclamacion">
+   <ImageView fitHeight="580.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../imagenes/fondop.png" />
+      </image>
+   </ImageView>
+
+    <Region prefHeight="580.0" prefWidth="892.0" style="-fx-background-image: url('/com/example/demo1/imagenes/fondop.png'); -fx-background-size: cover; -fx-background-position: center;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0" />
+
+    <VBox spacing="15.0" style="-fx-background-color: rgba(0,0,0,0.48); -fx-background-radius: 14; -fx-padding: 10;" styleClass="form-card" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="30.0">
+        <padding><Insets bottom="25.0" left="25.0" right="25.0" top="25.0" /></padding>
+
+        <Label text="HACER UNA RECLAMACIÓN" textFill="white">
+            <font><Font name="System Bold" size="24.0" /></font>
+        </Label>
+
+        <!-- FILA 1: Asiste | Cliente -->
+        <HBox spacing="30.0">
+            <VBox spacing="3.0" HBox.hgrow="ALWAYS">
+                <Label text="Quien lo asiste (id)" textFill="white">
+                    <font><Font name="System Bold" size="14.0" /></font>
+                </Label>
+                <TextField fx:id="TXTasiste" prefHeight="32.0" promptText="ID del empleado" style="-fx-background-color: rgba(255,255,255,0.88); -fx-background-radius: 8; -fx-text-fill: #1a1a1a; -fx-font-size: 13px;" />
+            </VBox>
+            <VBox spacing="3.0" HBox.hgrow="ALWAYS">
+                <Label text="Cliente que lo hace" textFill="white">
+                    <font><Font name="System Bold" size="14.0" /></font>
+                </Label>
+                <HBox spacing="5.0">
+                    <TextField fx:id="TXTclienteNombre" prefHeight="32.0" promptText="Nombre del cliente..." style="-fx-background-color: rgba(255,255,255,0.88); -fx-background-radius: 8; -fx-text-fill: #1a1a1a; -fx-font-size: 13px;" HBox.hgrow="ALWAYS" />
+                    <Button onAction="#FnBuscarCliente" prefHeight="32.0" prefWidth="40.0" style="-fx-background-color: #c0392b; -fx-text-fill: white; -fx-background-radius: 50; -fx-cursor: hand;" text="🔍" />
+                </HBox>
+                <Label fx:id="lblIdCliente" text="ID encontrado: —" textFill="#666">
+                    <font><Font size="11.0" /></font>
+                </Label>
+            </VBox>
+        </HBox>
+
+        <!-- FILA 2: Estado | Id Pedido -->
+        <HBox spacing="30.0">
+            <VBox spacing="3.0" HBox.hgrow="ALWAYS">
+                <Label text="Estado" textFill="white">
+                    <font><Font name="System Bold" size="14.0" /></font>
+                </Label>
+                <ComboBox fx:id="cmbEstado" maxWidth="Infinity" prefHeight="32.0" style="-fx-background-color: rgba(255,255,255,0.88); -fx-background-radius: 8; -fx-text-fill: #1a1a1a; -fx-font-size: 13px;" />
+            </VBox>
+            <VBox spacing="3.0" HBox.hgrow="ALWAYS">
+                <Label text="Id de pedido" textFill="white">
+                    <font><Font name="System Bold" size="14.0" /></font>
+                </Label>
+                <TextField fx:id="TXTidPedido" prefHeight="32.0" style="-fx-background-color: rgba(255,255,255,0.88); -fx-background-radius: 8; -fx-text-fill: #1a1a1a; -fx-font-size: 13px;" />
+            </VBox>
+        </HBox>
+
+        <!-- Descripción -->
+        <VBox spacing="3.0">
+            <Label text="Descripción" textFill="white">
+                <font><Font name="System Bold" size="14.0" /></font>
+            </Label>
+            <TextArea fx:id="TXTdescripcion" style="-fx-background-color: rgba(255,255,255,0.88); -fx-background-radius: 8; -fx-text-fill: #1a1a1a; -fx-font-size: 13px;" VBox.vgrow="ALWAYS" />
+        </VBox>
+
+        <!-- BOTONES -->
+        <HBox alignment="CENTER_LEFT" spacing="10.0">
+            <padding><Insets top="10.0" /></padding>
+            <Button onAction="#FnGuardar" prefHeight="32.0" prefWidth="80.0" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-cursor: hand;" text="Guardar" />
+            <Button onAction="#FnEliminar" prefHeight="32.0" prefWidth="80.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-cursor: hand;" text="Eliminar" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button onAction="#FnEditar" prefHeight="32.0" prefWidth="80.0" style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 20; -fx-cursor: hand;" text="Editar" />
+            <Button onAction="#FnBuscar" prefHeight="32.0" prefWidth="40.0" style="-fx-background-color: #c0392b; -fx-text-fill: white; -fx-background-radius: 50; -fx-cursor: hand;" text="🔍" />
+        </HBox>
+
+    </VBox>
+</AnchorPane>

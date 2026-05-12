@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="580.0" prefWidth="900.0"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo1.Controllers.CONTROLLER_Registro">
+
+    <!-- FONDO -->
+
+    <Region AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" style="-fx-background-image: url('/com/example/demo1/imagenes/fondop.png'); -fx-background-size: cover; -fx-background-position: center;"/>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <VBox alignment="CENTER" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+        <!-- TARJETA DE REGISTRO -->
+        <AnchorPane prefHeight="430.0" prefWidth="320.0"
+                    style="-fx-background-color: rgba(0,0,0,0.52); -fx-background-radius: 16; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.5), 20, 0, 0, 6);">
+            <padding><Insets top="20" left="20" right="20" bottom="20"/></padding>
+
+            <!-- Cabecera de colores Domino's -->
+            <AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="55.0" prefWidth="160.0"
+                        style="-fx-background-color: #004aad; -fx-background-radius: 16 0 0 0;">
+            </AnchorPane>
+            <AnchorPane layoutX="160.0" layoutY="0.0" prefHeight="55.0" prefWidth="160.0"
+                        style="-fx-background-color: #be1e1e; -fx-background-radius: 0 16 0 0;">
+            </AnchorPane>
+
+            <!-- Icono de usuario -->
+            <Circle fill="WHITE" layoutX="160.0" layoutY="55.0" radius="28.0"
+                    stroke="#004aad" strokeType="INSIDE" strokeWidth="3.0"/>
+            <Label layoutX="148.0" layoutY="33.0" text="👤"
+                   style="-fx-font-size: 26px;"/>
+
+            <!-- Título -->
+            <Label layoutX="40.0" layoutY="90.0" prefWidth="240.0"
+                   text="Bienvenido/a" textAlignment="CENTER" textFill="white">
+                <font><Font name="System Bold" size="20.0"/></font>
+            </Label>
+            <Label layoutX="40.0" layoutY="115.0" prefWidth="240.0"
+                   text="Ingrese su información" textAlignment="CENTER" textFill="white">
+                <font><Font size="13.0"/></font>
+            </Label>
+
+            <!-- Campo: Nombre -->
+            <Label layoutX="30.0" layoutY="150.0" text="Nombre" textFill="white">
+                <font><Font name="System Bold" size="13.0"/></font>
+            </Label>
+            <TextField fx:id="TxtNombre" layoutX="30.0" layoutY="170.0"
+                       prefHeight="32.0" prefWidth="260.0"
+                       style="-fx-background-color: rgba(255,255,255,0.88); -fx-background-radius: 8; -fx-text-fill: #1a1a1a; -fx-font-size: 13px;"/>
+
+            <!-- Campo: Teléfono -->
+            <Label layoutX="30.0" layoutY="210.0" text="Teléfono" textFill="white">
+                <font><Font name="System Bold" size="13.0"/></font>
+            </Label>
+            <TextField fx:id="TxtTelefono" layoutX="30.0" layoutY="230.0"
+                       prefHeight="32.0" prefWidth="260.0"
+                       style="-fx-background-color: rgba(255,255,255,0.88); -fx-background-radius: 8; -fx-text-fill: #1a1a1a; -fx-font-size: 13px;"/>
+
+            <!-- Campo: Cédula -->
+            <Label layoutX="30.0" layoutY="270.0" text="Cédula" textFill="white">
+                <font><Font name="System Bold" size="13.0"/></font>
+            </Label>
+            <TextField fx:id="TxtCedula" layoutX="30.0" layoutY="290.0"
+                       prefHeight="32.0" prefWidth="260.0"
+                       style="-fx-background-color: rgba(255,255,255,0.88); -fx-background-radius: 8; -fx-text-fill: #1a1a1a; -fx-font-size: 13px;"/>
+
+            <!-- Campo: Dirección -->
+            <Label layoutX="30.0" layoutY="330.0" text="Dirección" textFill="white">
+                <font><Font name="System Bold" size="13.0"/></font>
+            </Label>
+            <TextField fx:id="TxtDireccion" layoutX="30.0" layoutY="350.0"
+                       prefHeight="32.0" prefWidth="260.0"
+                       style="-fx-background-color: rgba(255,255,255,0.88); -fx-background-radius: 8; -fx-text-fill: #1a1a1a; -fx-font-size: 13px;"/>
+
+            <!-- Botones -->
+            <Button fx:id="btnRegistrar" layoutX="30.0" layoutY="400.0"
+                    prefHeight="32.0" prefWidth="120.0"
+                    onAction="#registrarUsuario" text="Registrar"
+                    style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand;">
+                <font><Font name="System Bold" size="13.0"/></font>
+            </Button>
+            <Button fx:id="btnLimpiar" layoutX="160.0" layoutY="400.0"
+                    prefHeight="32.0" prefWidth="130.0"
+                    onAction="#limpiarCampos" text="Limpiar"
+                    style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand;">
+                <font><Font name="System Bold" size="13.0"/></font>
+            </Button>
+
+        </AnchorPane>
+    </VBox>
+</AnchorPane>
+

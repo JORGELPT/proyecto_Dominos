@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefWidth="900.0" prefHeight="580.0"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.demo1.Controllers.Controller_Inventario">
+
+    <Region AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0" style="-fx-background-image: url('/com/example/demo1/imagenes/fondop.png'); -fx-background-size: cover; -fx-background-position: center;"/>
+
+    <HBox spacing="30.0"
+          AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0"
+          AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0">
+
+        <!-- COLUMNA IZQUIERDA: TABLA -->
+        <VBox spacing="15.0" HBox.hgrow="ALWAYS" styleClass="form-card" style="-fx-background-color: rgba(0,0,0,0.48); -fx-background-radius: 14; -fx-padding: 10;">
+            <padding><Insets top="20.0" left="20.0" right="20.0" bottom="20.0"/></padding>
+
+            <!-- Encabezado con título y buscador -->
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+                <Label text="INVENTARIO" textFill="white">
+                    <font><Font name="System Bold" size="28.0"/></font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="TXTbuscar" prefHeight="32.0" prefWidth="200.0"
+                           promptText="Buscar..."
+                           style="-fx-background-radius: 20; -fx-background-color: #E0E0E0; -fx-padding: 0 15 0 15;"/>
+                <Button onAction="#FnBuscar" prefHeight="32.0" prefWidth="40.0"
+                        styleClass="btn-buscar" text="🔍"/>
+            </HBox>
+
+            <!-- Tabla de inventario -->
+            <TableView fx:id="tablaInventario"
+                       style="-fx-border-color: #004aad; -fx-border-width: 2;"
+                       VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colId"        prefWidth="60.0"  text="ID"/>
+                    <TableColumn fx:id="colNombre"    prefWidth="150.0" text="Nombre"/>
+                    <TableColumn fx:id="colCategoria" prefWidth="120.0" text="Categoría"/>
+                    <TableColumn fx:id="colFechaExp"  prefWidth="120.0" text="Fecha de EXP"/>
+                    <TableColumn fx:id="colCantStock" prefWidth="120.0" text="Cant. en Stock"/>
+                    <TableColumn fx:id="colCantMin"   prefWidth="120.0" text="Cant. Mín."/>
+                </columns>
+            </TableView>
+
+        </VBox>
+
+        <!-- COLUMNA DERECHA: BOTÓN AGREGAR -->
+        <VBox alignment="TOP_CENTER" prefHeight="580.0" spacing="20.0"
+              styleClass="form-card" style="-fx-background-color: rgba(0,0,0,0.48); -fx-background-radius: 14; -fx-padding: 10;">
+            <padding><Insets top="50.0" left="20.0" right="20.0" bottom="20.0"/></padding>
+
+            <HBox alignment="CENTER" spacing="10.0">
+                <Label text="AGREGAR&#10;INGREDIENTE" textAlignment="LEFT" textFill="white">
+                    <font><Font name="System Bold" size="20.0"/></font>
+                </Label>
+                <Label style="-fx-font-size: 38px;" text="🍅" textFill="#ff0101"/>
+            </HBox>
+
+            <Button onAction="#FnAgregarIngrediente" prefHeight="40.0" prefWidth="200.0"
+                    style="-fx-background-color: #b8d4ff; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-background-radius: 20; -fx-cursor: hand;" text="Aquí"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <Label style="-fx-font-size: 140px;" text="🚚" textFill="#9f2020"/>
+
+        </VBox>
+
+    </HBox>
+</AnchorPane>
+
+

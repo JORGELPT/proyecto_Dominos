@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Controllers.CONTROLLER_hace_ub_pedido">
+
+    <Region maxWidth="Infinity" maxHeight="Infinity" style="-fx-background-image: url('/com/example/demo1/imagenes/fondop.png'); -fx-background-size: cover; -fx-background-position: center;"/>
+    <BorderPane>
+
+    <!-- TOP BAR -->
+    <top>
+        <HBox styleClass="ped-topbar" alignment="CENTER_LEFT" spacing="14">
+            <padding><Insets top="10" right="18" bottom="10" left="18"/></padding>
+            <VBox spacing="1">
+                <Label fx:id="lblFecha" text="" styleClass="ped-fecha"/>
+                <Label text="🍕  Nuevo Pedido" styleClass="ped-titulo-top"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <TextField fx:id="txtBuscar" promptText="🔍  Buscar producto..."
+                       prefWidth="270" styleClass="ped-search"
+                       onKeyReleased="#FnBuscar"/>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="0">
+
+            <!-- ═══════════════════ CATÁLOGO ═══════════════════ -->
+            <VBox HBox.hgrow="ALWAYS" styleClass="ped-catalogo">
+
+                <!-- Encabezado -->
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <padding><Insets top="16" right="18" bottom="4" left="18"/></padding>
+                    <Label text="Encuentra el Mejor Producto" styleClass="ped-catalogo-titulo"
+                           HBox.hgrow="ALWAYS"/>
+                    <Button text="Ver Todo" styleClass="ped-btn-ver-todo" onAction="#FnFiltrarTodos"/>
+                </HBox>
+
+                <!-- Tabs de categoría -->
+                <HBox fx:id="hboxTabs" spacing="8" alignment="CENTER_LEFT">
+                    <padding><Insets top="8" right="18" bottom="8" left="18"/></padding>
+                    <Button fx:id="btnTodos"   text="Todos"      styleClass="ped-tab-active" onAction="#FnFiltrarTodos"/>
+                    <Button fx:id="btnPizza"   text="Pizza"      styleClass="ped-tab"        onAction="#FnFiltrarCategoria"/>
+                    <Button fx:id="btnBebida"  text="Bebida"     styleClass="ped-tab"        onAction="#FnFiltrarCategoria"/>
+                    <Button fx:id="btnPasta"   text="Pasta"      styleClass="ped-tab"        onAction="#FnFiltrarCategoria"/>
+                    <Button fx:id="btnPostre"  text="Postre"     styleClass="ped-tab"        onAction="#FnFiltrarCategoria"/>
+                    <Button fx:id="btnOfertas" text="⭐ Ofertas" styleClass="ped-tab-oferta" onAction="#FnFiltrarOfertas"/>
+                </HBox>
+
+                <!-- Grid de productos (FlowPane dinámico) -->
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="ped-grid-scroll">
+                    <FlowPane fx:id="flowProductos" hgap="14" vgap="14">
+                        <padding><Insets top="10" right="18" bottom="18" left="18"/></padding>
+                    </FlowPane>
+                </ScrollPane>
+
+            </VBox>
+
+            <!-- ═══════════════════ PANEL PEDIDO ═══════════════════ -->
+            <VBox minWidth="320" styleClass="ped-panel">
+
+                <!-- Header -->
+                <HBox alignment="CENTER_LEFT" styleClass="ped-panel-header">
+                    <padding><Insets top="14" right="14" bottom="14" left="16"/></padding>
+                    <Label text="Mi Pedido" styleClass="ped-panel-titulo" HBox.hgrow="ALWAYS"/>
+                    <Button text="✕" styleClass="ped-btn-clear" onAction="#FnLimpiar"/>
+                </HBox>
+
+                <!-- Tipo de entrega -->
+                <HBox spacing="6" styleClass="ped-entrega-box">
+                    <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+                    <ToggleButton fx:id="tglEnLocal"  text="En Local" styleClass="ped-toggle-active"
+                                  HBox.hgrow="ALWAYS" maxWidth="Infinity" onAction="#FnEntregaEnLocal"/>
+                    <ToggleButton fx:id="tglRecoger"  text="Recoger"  styleClass="ped-toggle"
+                                  HBox.hgrow="ALWAYS" maxWidth="Infinity" onAction="#FnEntregaRecoger"/>
+                    <ToggleButton fx:id="tglDelivery" text="Delivery" styleClass="ped-toggle"
+                                  HBox.hgrow="ALWAYS" maxWidth="Infinity" onAction="#FnEntregaDelivery"/>
+                </HBox>
+
+                <!-- Cliente -->
+                <VBox spacing="5" styleClass="ped-seccion">
+                    <padding><Insets top="8" right="12" bottom="8" left="12"/></padding>
+                    <Label text="Cliente" styleClass="ped-seccion-titulo"/>
+                    <HBox spacing="6" alignment="CENTER_LEFT">
+                        <TextField fx:id="txtCedula" promptText="Cédula del cliente"
+                                   HBox.hgrow="ALWAYS" styleClass="ped-input"
+                                   onAction="#FnBuscarCliente"/>
+                        <Button text="Buscar" styleClass="ped-btn-buscar" onAction="#FnBuscarCliente"/>
+                    </HBox>
+                    <Label fx:id="lblCliente" text="" styleClass="ped-cliente-label"/>
+                </VBox>
+
+                <Separator styleClass="ped-sep"/>
+
+                <!-- Lista de ítems del pedido -->
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" styleClass="ped-items-scroll">
+                    <VBox fx:id="vboxItems" spacing="8" styleClass="ped-items-list">
+                        <padding><Insets top="10" right="12" bottom="10" left="12"/></padding>
+                    </VBox>
+                </ScrollPane>
+
+                <!-- Extra / ingrediente adicional -->
+                <VBox spacing="4" styleClass="ped-seccion">
+                    <padding><Insets top="6" right="12" bottom="6" left="12"/></padding>
+                    <Label text="Extra / Ingrediente adicional" styleClass="ped-seccion-titulo"/>
+                    <ComboBox fx:id="cmbExtra" promptText="Sin extra"
+                              maxWidth="Infinity" styleClass="ped-combo"/>
+                </VBox>
+
+                <!-- Sección Delivery (oculta por defecto) -->
+                <VBox fx:id="vboxDelivery" spacing="4" styleClass="ped-seccion-delivery"
+                      visible="false" managed="false">
+                    <padding><Insets top="6" right="12" bottom="8" left="12"/></padding>
+                    <Label text="Método de Envío" styleClass="ped-seccion-titulo"/>
+                    <ComboBox fx:id="cmbMetodoEnvio" promptText="Seleccionar..."
+                              maxWidth="Infinity" styleClass="ped-combo"/>
+                    <Label text="Dirección de entrega" styleClass="ped-seccion-titulo"/>
+                    <TextField fx:id="txtDireccion" promptText="Ej: Calle 5, No. 10…"
+                               styleClass="ped-input"/>
+                    <Label text="Observaciones" styleClass="ped-seccion-titulo"/>
+                    <TextField fx:id="txtObservacion" promptText="Indicaciones adicionales…"
+                               styleClass="ped-input"/>
+                </VBox>
+
+                <Separator styleClass="ped-sep"/>
+
+                <!-- Totales -->
+                <VBox spacing="7" styleClass="ped-totales">
+                    <padding><Insets top="10" right="14" bottom="10" left="14"/></padding>
+                    <HBox>
+                        <Label text="Items"      styleClass="ped-total-lbl"     HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblSubtotal" text="$0.00" styleClass="ped-total-val"/>
+                    </HBox>
+                    <HBox>
+                        <Label text="Descuento"  styleClass="ped-descuento-lbl" HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblDescuento" text="-$0.00" styleClass="ped-descuento-val"/>
+                    </HBox>
+                    <HBox>
+                        <Label fx:id="lblItbsNombre" text="ITBS"
+                               styleClass="ped-total-lbl" HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblItbs" text="$0.00" styleClass="ped-total-val"/>
+                    </HBox>
+                    <Separator/>
+                    <HBox alignment="CENTER_LEFT">
+                        <Label text="Total Monto" styleClass="ped-gran-total-lbl" HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="lblTotal" text="$0.00" styleClass="ped-gran-total-val"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Método de pago -->
+                <VBox spacing="6" styleClass="ped-seccion">
+                    <padding><Insets top="8" right="12" bottom="8" left="12"/></padding>
+                    <Label text="Pagos" styleClass="ped-seccion-titulo"/>
+                    <HBox spacing="6">
+                        <ToggleButton fx:id="tglEfectivo" text="Efectivo"  styleClass="ped-pago-active"
+                                      HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                        <ToggleButton fx:id="tglTarjeta"  text="Tarjeta"   styleClass="ped-pago"
+                                      HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                        <ToggleButton fx:id="tglEWallet"  text="E-Wallet"  styleClass="ped-pago"
+                                      HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Checkout -->
+                <VBox styleClass="ped-checkout">
+                    <padding><Insets top="8" right="14" bottom="16" left="14"/></padding>
+                    <Label fx:id="lblMensaje" text="" styleClass="ped-mensaje"/>
+                    <Button text="Registrar Pedido" styleClass="ped-btn-checkout"
+                            maxWidth="Infinity" onAction="#FnGuardar"/>
+                </VBox>
+
+            </VBox>
+
+        </HBox>
+    </center>
+
+</BorderPane>
+</StackPane>

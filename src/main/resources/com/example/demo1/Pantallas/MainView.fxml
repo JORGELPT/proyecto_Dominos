@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.example.demo1.Controllers.Maincontroller">
+
+    <!-- FONDO: imagen de fondo -->
+
+    <Region maxWidth="Infinity" maxHeight="Infinity" style="-fx-background-image: url('/com/example/demo1/imagenes/fondop.png'); -fx-background-size: cover; -fx-background-position: center;"/>
+
+    <BorderPane prefHeight="700.0" prefWidth="1100.0">
+
+        <!-- ================= TOP BAR ================= -->
+        <top>
+            <HBox alignment="CENTER_LEFT" spacing="15.0"
+                  style="-fx-background-color: rgba(0,74,173,0.85);">
+                <padding>
+                    <Insets bottom="12.0" left="20.0" right="20.0" top="12.0" />
+                </padding>
+                <Label alignment="CENTER" text="👤" style="-fx-text-fill: white;"/>
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="lblUsuario" text="Administrador" style="-fx-text-fill: white;">
+                    <font><Font size="13.0" /></font>
+                </Label>
+                <Label fx:id="lblFecha" text="--/--/----" style="-fx-text-fill: white;">
+                    <font><Font size="13.0" /></font>
+                </Label>
+                <Label text="🍕" />
+            </HBox>
+        </top>
+
+        <!-- ================= SIDE MENU ================= -->
+        <left>
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER"
+                        style="-fx-background-color: rgba(255,255,255,0.88);
+                               -fx-background: rgba(255,255,255,0.88);">
+                <VBox fx:id="sideMenu" prefHeight="683.0" spacing="3.0">
+                    <padding>
+                        <Insets bottom="15.0" left="5.0" right="5.0" top="10.0" />
+                    </padding>
+
+                    <!-- ====== INICIO ====== -->
+                    <Button maxWidth="Infinity" onAction="#abrirInicio" text="Inicio" />
+
+                    <!-- ====== INVENTARIO ====== -->
+                    <Button maxWidth="Infinity" onAction="#abrirInventario" text="Inventario" />
+
+                    <!-- ====== COMPRAS ====== -->
+                    <TitledPane expanded="false" text="Compras">
+                        <content>
+                            <VBox spacing="2.0">
+                                <Button maxWidth="Infinity" onAction="#abrirAgregarProveedor" text="Agregar Proveedor" />
+                                <Button maxWidth="Infinity" onAction="#abrirComprasPago" text="Comprobante / Pago" />
+                                <Button maxWidth="Infinity" onAction="#abrirDevolucion" text="Devolución" />
+                            </VBox>
+                        </content>
+                    </TitledPane>
+
+                    <!-- ====== VENTAS ====== -->
+                    <TitledPane expanded="false" text="Ventas">
+                        <content>
+                            <VBox spacing="2.0">
+                                <Button maxWidth="Infinity" onAction="#abrirHacerPedido" text="Hacer un Pedido" />
+                                <Button maxWidth="Infinity" onAction="#abrirRegistroCliente" text="Registro de Cliente" />
+                                <Button maxWidth="Infinity" onAction="#abrirAgregarProducto" text="Agregar Producto" />
+                                <Button maxWidth="Infinity" onAction="#abrirEnvio" text="Envío" />
+                                <Button maxWidth="Infinity" onAction="#abrirReclamacion" text="Reclamación" />
+                            </VBox>
+                        </content>
+                    </TitledPane>
+
+                    <!-- ====== EQUIPOS Y MANTENIMIENTO ====== -->
+                    <TitledPane expanded="false" text="Equipos y Mantenimiento">
+                        <content>
+                            <VBox spacing="2.0">
+                                <Button maxWidth="Infinity" onAction="#abrirAgregarMaquina" text="Agregar Máquina" />
+                                <Button maxWidth="Infinity" onAction="#abrirAgregarTecnico" text="Agregar Técnico" />
+                                <Button maxWidth="Infinity" onAction="#abrirMantenimiento" text="Mantenimiento" />
+                                <Button maxWidth="Infinity" onAction="#abrirAperturaCaja" text="Apertura de Caja" />
+                                <Button maxWidth="Infinity" onAction="#abrirFallosMaquina" text="Fallos de Máquina" />
+                            </VBox>
+                        </content>
+                    </TitledPane>
+
+                    <!-- ====== OTRO ====== -->
+                    <TitledPane expanded="false" text="Otro">
+                        <content>
+                            <VBox spacing="2.0">
+                                <Button maxWidth="Infinity" onAction="#abrirAgregarEmpleado" text="Agregar Empleado" />
+                                <Button maxWidth="Infinity" onAction="#abrirAgregarCargo" text="Agregar Cargo" />
+                                <Button maxWidth="Infinity" onAction="#abrirAgregarDepartamento" text="Agregar Departamento" />
+                                <Button maxWidth="Infinity" onAction="#abrirAgregarSucursal" text="Agregar Sucursal" />
+                            </VBox>
+                        </content>
+                    </TitledPane>
+
+                    <!-- ====== REPORTES ====== -->
+                    <TitledPane expanded="false" text="Reportes">
+                        <content>
+                            <VBox spacing="2.0">
+                                <Button maxWidth="Infinity" onAction="#abrirReporte1" text="Consulta de Empleados" />
+                                <Button maxWidth="Infinity" onAction="#abrirReporte2" text="Reporte 2" />
+                                <Button maxWidth="Infinity" onAction="#abrirReporte3" text="Reporte 3" />
+                                <Button maxWidth="Infinity" onAction="#abrirReporte4" text="Reporte 4" />
+                                <Button maxWidth="Infinity" onAction="#abrirReporte5" text="Reporte 5" />
+                            </VBox>
+                        </content>
+                    </TitledPane>
+
+                    <Region minHeight="30" VBox.vgrow="ALWAYS" />
+
+                    <!-- ====== SALIR ====== -->
+                    <Button maxWidth="Infinity" onAction="#salir" text="Salir" />
+
+                </VBox>
+            </ScrollPane>
+        </left>
+
+        <!-- ================= CENTER CONTENT ================= -->
+        <center>
+            <StackPane fx:id="contentArea" />
+        </center>
+
+        <!-- ================= BOTTOM BAR ================= -->
+        <bottom>
+            <HBox alignment="CENTER_LEFT" spacing="10.0"
+                  style="-fx-background-color: rgba(0,74,173,0.75);">
+                <padding>
+                    <Insets bottom="6.0" left="15.0" right="15.0" top="6.0" />
+                </padding>
+                <Label fx:id="lblEstado" text="Listo" style="-fx-text-fill: white;"/>
+                <Region HBox.hgrow="ALWAYS" />
+                <Label text="v1.0.0" style="-fx-text-fill: white;"/>
+            </HBox>
+        </bottom>
+
+    </BorderPane>
+</StackPane>
+
